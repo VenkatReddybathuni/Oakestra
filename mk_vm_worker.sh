@@ -49,7 +49,7 @@ make_vm () {
   echo "[*] Building cloud-init for $NAME (NM=$NM_PORT, NE=$NE_PORT)…"
   
   # user-data
-  cat > "user-data-${NAME}.yaml" <<EOF
+  cat > "user-data-${NAME}.yaml" <<'EOF'
 #cloud-config
 hostname: ${NAME}
 package_update: true
@@ -112,9 +112,11 @@ runcmd:
   - |
     set -e
     install -d -m 0755 /etc/netmanager
+    ip=$(hostname -I 2>/dev/null | awk '{print $1}')
+    [ -z "$ip" ] && ip="127.0.0.1"
     printf '%s\n' \
       '{' \
-      '  "NodePublicAddress": "192.168.122.61",' \
+      "  \"NodePublicAddress\": \"${ip}\"," \
       '  "NodePublicPort": "50103",' \
       '  "ClusterUrl": "192.168.122.1",' \
       '  "ClusterMqttPort": "10003"' \
