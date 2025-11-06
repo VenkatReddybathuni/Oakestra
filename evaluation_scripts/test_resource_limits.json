@@ -1,0 +1,65 @@
+{
+  "sla_version": "v2.0",
+  "customerID": "Admin",
+  "applications": [
+    {
+      "applicationID": "",
+      "application_name": "resource-test",
+      "application_namespace": "test",
+      "application_desc": "Test new resource specification format",
+      "microservices": [
+        {
+          "microserviceID": "",
+          "microservice_name": "nginx-limited",
+          "microservice_namespace": "test",
+          "virtualization": "container",
+          "cmd": [],
+          "resource_spec": {
+            "requests": {
+              "cpu": "250m",
+              "memory": "128Mi",
+              "ephemeral-storage": "500Mi"
+            },
+            "limits": {
+              "cpu": "500m",
+              "memory": "256Mi",
+              "ephemeral-storage": "1Gi"
+            }
+          },
+          "code": "docker.io/library/nginx:latest",
+          "state": "",
+          "port": "8080:80",
+          "addresses": {
+            "rr_ip": "10.30.55.55"
+          },
+          "added_files": [],
+          "constraints": []
+        },
+        {
+          "microserviceID": "",
+          "microservice_name": "alpine-worker",
+          "microservice_namespace": "test",
+          "virtualization": "container",
+          "cmd": ["sh", "-c", "while true; do echo 'Working...'; sleep 10; done"],
+          "resource_spec": {
+            "requests": {
+              "cpu": "100m",
+              "memory": "64Mi",
+              "ephemeral-storage": "100Mi"
+            },
+            "limits": {
+              "cpu": "200m",
+              "memory": "128Mi",
+              "ephemeral-storage": "500Mi"
+            }
+          },
+          "code": "docker.io/library/alpine:latest",
+          "state": "",
+          "port": "",
+          "added_files": [],
+          "constraints": []
+        }
+      ]
+    }
+  ]
+}

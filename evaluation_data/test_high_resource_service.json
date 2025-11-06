@@ -1,0 +1,35 @@
+{
+  "application_name": "high-resource-test",
+  "application_namespace": "default", 
+  "application_descriptor": {
+    "services": [
+      {
+        "servicename": "nginx-high",
+        "image": "nginx:alpine",
+        "virtualization": "container",
+        "replicas": 1,
+        "port": 80,
+        "addresses": {
+          "rr_ip": "10.30.30.31"
+        },
+        "resources": {
+          "requests": {
+            "cpu": "1000m",
+            "memory": "1Gi", 
+            "storage": "2Gi"
+          },
+          "limits": {
+            "cpu": "2000m",
+            "memory": "2Gi",
+            "storage": "4Gi"
+          }
+        },
+        "code": "",
+        "state": "",
+        "environment": [],
+        "command": [],
+        "args": []
+      }
+    ]
+  }
+}

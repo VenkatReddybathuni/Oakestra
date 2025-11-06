@@ -1,0 +1,8 @@
+flask
+flask_pymongo
+celery==4.4.2
+click
+redis
+requests
+pymongo
+git+https://github.com/lucasleschynski/oakestra.git@develop#subdirectory=libraries/oakestra_utils_library

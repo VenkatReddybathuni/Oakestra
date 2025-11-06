@@ -1,0 +1,41 @@
+{
+  "sla_version": "v2.0",
+  "customerID": "Admin",
+  "applications": [
+    {
+      "applicationID": "",
+      "application_name": "high-resources",
+      "application_namespace": "test",
+      "application_desc": "High resource requirements test",
+      "microservices": [
+        {
+          "microserviceID": "",
+          "microservice_name": "resource-heavy",
+          "microservice_namespace": "test",
+          "virtualization": "container",
+          "cmd": [
+            "sleep",
+            "300"
+          ],
+          "resource_spec": {
+            "requests": {
+              "cpu": "1",
+              "memory": "512Mi",
+              "ephemeral-storage": "2Gi"
+            },
+            "limits": {
+              "cpu": "2",
+              "memory": "1Gi",
+              "ephemeral-storage": "4Gi"
+            }
+          },
+          "code": "docker.io/library/alpine:latest",
+          "state": "",
+          "port": "",
+          "added_files": [],
+          "constraints": []
+        }
+      ]
+    }
+  ]
+}

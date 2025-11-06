@@ -1,0 +1,42 @@
+services:
+  ubuntu-systemd:
+    build: .
+    container_name: ubuntu-systemd
+    privileged: true
+    hostname: ubuntu-container
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker:/var/lib/docker
+      - /var/lib/containerd:/var/lib/containerd
+      - systemd-tmpfs:/tmp:noexec,nosuid,size=100m
+      - systemd-run:/run:noexec,nosuid,nodev,size=100m
+      - systemd-run-lock:/run/lock:noexec,nosuid,nodev,size=100m
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
+      - /run:noexec,nosuid,nodev,size=100m
+      - /run/lock:noexec,nosuid,nodev,size=100m
+    ports:
+      - "2222:22"
+      - "8080:8080"
+      - "8443:443"
+      - "6000:6000"
+    cap_add:
+      - SYS_ADMIN
+      - SYS_TIME
+      - SYS_PTRACE
+      - NET_ADMIN
+      - NET_RAW
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    devices:
+      - /dev/fuse:/dev/fuse
+
+volumes:
+  systemd-tmpfs:
+  systemd-run:
+  systemd-run-lock:

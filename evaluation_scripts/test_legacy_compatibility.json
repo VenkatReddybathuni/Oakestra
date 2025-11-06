@@ -1,0 +1,33 @@
+{
+  "sla_version": "v2.0",
+  "customerID": "Admin",
+  "applications": [
+    {
+      "applicationID": "",
+      "application_name": "legacy-compat",
+      "application_namespace": "test",
+      "application_desc": "Legacy format compatibility test",
+      "microservices": [
+        {
+          "microserviceID": "",
+          "microservice_name": "nginx-legacy",
+          "microservice_namespace": "test",
+          "virtualization": "container",
+          "cmd": [],
+          "memory": 256,
+          "vcpus": 1,
+          "vgpus": 0,
+          "vtpus": 0,
+          "bandwidth_in": 0,
+          "bandwidth_out": 0,
+          "storage": 512,
+          "code": "docker.io/library/nginx:latest",
+          "state": "",
+          "port": "8081:80",
+          "added_files": [],
+          "constraints": []
+        }
+      ]
+    }
+  ]
+}
